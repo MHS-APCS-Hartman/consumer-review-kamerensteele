@@ -222,6 +222,43 @@ public class Review {
          return 0;
       }
   }
+  
+    public static String fakeReview(String fileName)
+  {
+      String newReview = "";
+      String theReview = textToString(fileName);
+      String word = "";
+      int index = 0;
+      int len = theReview.length();
+      while(index < len)
+      {
+        
+         //check if it is an end of a word
+         if(theReview.substring(index, index + 1).equals(" "))
+         {
+            //check if it is an adjective and replace
+            if(word.substring(0,1).equals("*"))
+            {
+               word = randomAdjective();
+            }
+            
+            //add word to output string
+            newReview += word + " "; //adds a space between each word
+            
+            //reset word
+            word = "";
+            
+            
+         }
+         else //haven't reached end of the word
+         {
+            word += theReview.substring(index, index + 1);
+         }
+         index++;
+        
+        
+      }
+      return newReview;
 
 
 }
